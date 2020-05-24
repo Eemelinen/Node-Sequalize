@@ -1,5 +1,5 @@
 const db = require('./db/index');
-const { Movie } = db.models;
+const { Movie, Person } = db.models;
 
 // async IIFE
 (async () => {
@@ -22,6 +22,12 @@ const { Movie } = db.models;
             isAvailableOnVHS: true,
         });
         console.log(movie2.toJSON());
+
+        const person = await Person.create({
+            first_name: 'Eemeli',
+            last_name: 'Surakka',
+        });
+        console.log(person.toJSON());
         
         // ====== PROMISE ALL WAY FOR LOGGING ====== //
 
