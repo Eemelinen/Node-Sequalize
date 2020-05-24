@@ -7,19 +7,20 @@ const { Movie } = db.models;
     await db.sequelize.sync({ force: true });
 
     try {
-        // ====== ONE AT A TIME FOR LOGGING ====== //
-        console.log("Connection was succesful!");
-        // Inserts new data row into movie table.
         const movie = await Movie.create({
-            title: "Toy Story 2"
+            title: 'Toy Story',
+            runtime: 81,
+            releaseDate: '1995-11-22',
+            isAvailableOnVHS: true,
         });
+        console.log(movie.toJSON());
 
         const movie2 = await Movie.create({
-            title: "Pulp Fiction"
+            title: 'The Incredibles',
+            runtime: 115,
+            releaseDate: '2004-04-14',
+            isAvailableOnVHS: true,
         });
-
-        // movie.toJSON() returns json representation of the table's data.
-        console.log(movie.toJSON());
         console.log(movie2.toJSON());
         
         // ====== PROMISE ALL WAY FOR LOGGING ====== //
